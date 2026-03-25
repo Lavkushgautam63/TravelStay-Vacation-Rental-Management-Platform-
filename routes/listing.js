@@ -5,7 +5,7 @@ const ExpressError = require("../utils/ExpressError");
 const { listingSchema } = require("../schema");
 const Listing = require("../models/listing");
 
-// ✅ Middleware to validate listing input
+//Middleware to validate listing input
 const validateListing = (req, res, next) => {
   const { error } = listingSchema.validate(req.body);
   if (error) {
@@ -15,7 +15,7 @@ const validateListing = (req, res, next) => {
   next();
 };
 
-// ✅ INDEX: Get all listings
+// Get all listings
 router.get(
   "/",
   wrapAsync(async (req, res) => {
@@ -24,12 +24,12 @@ router.get(
   })
 );
 
-// ✅ NEW: Show form to create new listing
+//Show form to create new listing
 router.get("/new", (req, res) => {
   res.render("listings/new.ejs");
 });
 
-// ✅ CREATE: Add a new listing using form data (with image URL)
+//Add a new listing using form data (with image URL)
 router.post(
   "/",
   validateListing,
@@ -41,7 +41,7 @@ router.post(
   })
 );
 
-// ✅ SHOW: View one listing
+//View one listing
 router.get(
   "/:id",
   wrapAsync(async (req, res) => {
@@ -55,7 +55,7 @@ router.get(
   })
 );
 
-// ✅ EDIT: Show edit form
+//Show edit form
 router.get(
   "/:id/edit",
   wrapAsync(async (req, res) => {
@@ -69,7 +69,7 @@ router.get(
   })
 );
 
-// ✅ UPDATE: Save edited listing (with image URL)
+//Save edited listing (with image URL)
 router.put(
   "/:id",
   validateListing,
@@ -82,7 +82,7 @@ router.put(
   })
 );
 
-// ✅ DELETE: Delete a listing
+// DELETE: Delete a listing
 router.delete(
   "/:id",
   wrapAsync(async (req, res) => {
