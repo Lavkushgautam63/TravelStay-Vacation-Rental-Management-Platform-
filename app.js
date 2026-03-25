@@ -16,14 +16,14 @@ const userRouter = require("./routes/user.js");
 
 const app = express();
 
-// Database connection
+
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 
 mongoose.connect(MONGO_URL)
   .then(() => console.log("✅ Connected to MongoDB"))
   .catch((err) => console.error("MongoDB Connection Error:", err));
 
-// View engine and static files
+
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
